@@ -1,0 +1,15 @@
+#' Condition Ranges for Renaming
+#'
+#' Description of the dataset.
+#'
+#' @format A list of the different ranges for each condition
+#' \describe{
+#'   \item{FD1}{"q1_1_25", "q16_2_56"}
+#'   \item{FD2}{"q1_1_57", "q16_2_88"}
+#'   \item{FL1}{"q1_1_89", "q16_2_120"}
+#'   \item{FL2}{"q1_1_121", "q16_2_152"}
+#'   \item{B1}{"q1_1_153", "q16_2_184"}
+#'   \item{B2}{"q1_1_185", "q16_2_216"}
+#' }
+#' @source \url{data_URL}
+"cond_ranges"
