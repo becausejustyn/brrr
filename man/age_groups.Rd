@@ -18,5 +18,6 @@ column with age categories
 age_groups
 }
 \examples{
-mtcars |> age_groups(mpg)
+df <- data.frame(age = sample(18:65, size = 5, replace = TRUE))
+df |> age_groups(age)
 }

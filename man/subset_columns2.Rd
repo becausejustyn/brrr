@@ -18,5 +18,7 @@ dataframe with selected columns
 subset_columns2
 }
 \examples{
+\dontrun{
 subset_columns1(df, cond_ranges)
+}
 }

@@ -16,4 +16,6 @@ Depends:
 RoxygenNote: 7.2.3
 Imports: 
     dplyr,
-    purrr
+    purrr,
+    rlang,
+    stringr

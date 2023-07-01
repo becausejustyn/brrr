@@ -6,7 +6,9 @@
 #' @return column with age categories
 #' @export
 #'
-#' @examples mtcars |> age_groups(mpg)
+#' @examples
+#' df <- data.frame(age = sample(18:65, size = 5, replace = TRUE))
+#' df |> age_groups(age)
 age_groups <- function(data, column){
   data <- data |>
     dplyr::mutate(

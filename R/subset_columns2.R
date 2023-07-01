@@ -6,7 +6,10 @@
 #' @return dataframe with selected columns
 #' @export
 #'
-#' @examples subset_columns1(df, cond_ranges)
+#' @examples
+#' \dontrun{
+#' subset_columns1(df, cond_ranges)
+#' }
 subset_columns2 <- function(df, cond_ranges) {
   purrr::map(cond_ranges, ~ {
     df |>
