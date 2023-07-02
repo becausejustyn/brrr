@@ -12,7 +12,7 @@ cond_label(data, column_name)
 \item{column_name}{condition label, e.g. 'FD1', 'FL1' or 'B1'}
 }
 \value{
-dataframe with column named `condition` where `FD1` becomes `fair_dark`, `FL1` becomes `fair_light`, and `B1` becomes `biased`.
+dataframe with column named `type` where `FD1` becomes `fair_dark`, `FL1` becomes `fair_light`, and `B1` becomes `biased`.
 }
 \description{
 cond_label
