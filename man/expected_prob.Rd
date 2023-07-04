@@ -4,12 +4,12 @@
 \alias{expected_prob}
 \title{expected_prob}
 \usage{
-expected_prob(data, condition)
+expected_prob(data, conditions)
 }
 \arguments{
 \item{data}{dataframe}
 
-\item{condition}{experiment condition}
+\item{conditions}{experiment condition, can be multiple, e.g. c('fair', 'dark', 'light')}
 }
 \value{
 rounded half of the number of instances. E.g. If a condition was in 501 trials, then 250 will be returned.
@@ -19,6 +19,6 @@ Given a condition in the experiment, find the number of times that condition was
 }
 \examples{
 \dontrun{
-expected_prob(df, 'FD1')
+expected_prob(df, conditions = c('dark', 'fair', 'light'))
 }
 }

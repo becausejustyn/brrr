@@ -3,21 +3,29 @@
 #' Given a condition in the experiment, find the number of times that condition was one of the trials.
 #'
 #' @param data dataframe
-#' @param condition experiment condition
+#' @param conditions experiment condition, can be multiple, e.g. c('fair', 'dark', 'light')
 #'
 #' @return rounded half of the number of instances. E.g. If a condition was in 501 trials, then 250 will be returned.
 #' @export
 #'
 #' @examples
 #' \dontrun{
-#' expected_prob(df, 'FD1')
+#' expected_prob(df, conditions = c('dark', 'fair', 'light'))
 #' }
-expected_prob <- function(data, condition){
-  # get the instance count for each model
-  instance_n <- data |>
-    filter(cond1 == {{condition}} | cond2 == {{condition}}) |>
-    nrow()
+expected_prob <- function(data, conditions) {
+  # Use map() to iterate over each condition
+  result <- purrr::map_dbl(conditions, function(cond) {
+    # Get the instance count for the current condition
+    instance_n <- data |>
+      dplyr::filter(cond1 == cond | cond2 == cond) |>
+      nrow()
 
-  # assuming a 50/50 chance, round down
-  return(floor(instance_n / 2))
+    # Assuming a 50/50 chance, round down
+    floor(instance_n / 2)
+  })
+
+  # Create a named vector with the results
+  names(result) <- conditions
+
+  return(result)
 }
