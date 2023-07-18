@@ -13,10 +13,13 @@
 #' }
 
 lrt <- function(chi_square_data){
-  # Log-likelihood of observed counts
-  LL1 <- stats::logLik(chi_square_data[['observed']])
-  # Log-likelihood of expected counts, e.g. null
-  LL2 <- stats::logLik(chi_square_data[['expected']])
+  # contingency table of observed and expected counts
+  observed <- chi_square_data[['observed']] |> as.table()
+  expected <- chi_square_data[['expected']] |> as.table()
+
+  # Log-likelihood of observed and expected counts
+  LL1 <- stats::logLik(observed)
+  LL2 <- stats::logLik(expected)
 
   # Likelihood ratio test statistic
   LR_stat <- 2 * (LL2 - LL1)
