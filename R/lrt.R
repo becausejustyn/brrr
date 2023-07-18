@@ -13,16 +13,17 @@
 #' }
 
 lrt <- function(chi_square_data){
+
   # contingency table of observed and expected counts
   observed <- chi_square_data[['observed']] |> as.table()
   expected <- chi_square_data[['expected']] |> as.table()
 
   # Log-likelihood of observed and expected counts
-  LL1 <- stats::logLik(observed)
-  LL2 <- stats::logLik(expected)
+  LL1 <- sum(observed * log(observed / sum(observed)))
+  LL2 <- sum(observed * log(expected / sum(expected)))
 
   # Likelihood ratio test statistic
-  LR_stat <- 2 * (LL2 - LL1)
+  LR_stat <- abs(2 * (LL2 - LL1))
 
   # Degrees of freedom
   df <- chi_square_data[['parameter']]
