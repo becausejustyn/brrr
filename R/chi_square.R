@@ -30,8 +30,15 @@ chi_square <- function(df, type) {
     dplyr::count(preferred_mod) |>
     dplyr::ungroup()
 
-  result <- xtabs(n ~ uuid + preferred_mod, df1) |>
-    chisq.test()
+  # this warning is not needed. It is about approximation,
+  # however, it is not relevant in this instance
+  result <- suppressWarnings(
+    xtabs(n ~ uuid + preferred_mod, df1) |>
+      chisq.test()
+  )
+
+  #result <- xtabs(n ~ uuid + preferred_mod, df1) |>
+  #  chisq.test()
 
   return(result)
 }
